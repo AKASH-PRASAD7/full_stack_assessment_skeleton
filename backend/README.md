@@ -29,7 +29,13 @@
 ## Installation
 
 ```bash
+$ cd backend/
+```
+
+```bash
 $ pnpm install
+or
+$ npm install
 ```
 
 ## Running the app
@@ -37,12 +43,18 @@ $ pnpm install
 ```bash
 # development
 $ pnpm run start
+or
+$ npm start
 
 # watch mode
 $ pnpm run start:dev
+or
+$ npm run start:dev
+```
 
-# production mode
-$ pnpm run start:prod
+- The server would be running on
+```bash
+http://127.0.0.1:3000/api/
 ```
 
 ## Test

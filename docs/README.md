@@ -32,6 +32,11 @@
     - key problem solving points: that provide a high level overview of how you solved that problem
       - eg: for the DB problem, what tables you created / altered, how does that accomplish the tasks (if it's not obvious)
     - instructions: you must include all instructions (including code) that will allow us to run and review your solution
+   
+## Screenshots
+  ![image](https://github.com/user-attachments/assets/128ccd19-c992-4b99-ac31-ade9c79557bd)
+  ![image](https://github.com/user-attachments/assets/c48fe9b1-689e-426b-b176-d37bb3ac1ddf)
+
 
 ## 0. Setup
 
@@ -39,12 +44,11 @@
 - clone the fork locally to develop
 
 ```bash
-git clone https://github.com/<username>/full_stack_assessment_skeleton.git
+git clone https://github.com/AKASH-PRASAD7/full_stack_assessment_skeleton.git
 ```
 
-> [!NOTE]
-> throughout the readme, we'll be working from within the root directory (full_stack_assessment_skeleton/) of the repo, unless otherwise stated
 
+# Database Setup
 - use docker to spin up **MySql** db container
 - this db instance has some data that will be needed for the exercise, included in it
 
@@ -65,6 +69,69 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 - the database is `home_db`, user `db_user` has full read-write access to it
 - `home_db.user_home` table has some data populated in it
+- Run all the queries inside `sql/99_final_db_dump.sql` to migrate the data
+
+ > [!CAUTION]
+> Make sure that the container's port is properly mapped to port 3306
+
+# Backend Setp
+
+## Installation
+
+```bash
+$ cd backend/
+```
+
+```bash
+$ pnpm install
+or
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ pnpm run start
+or
+$ npm start
+
+# watch mode
+$ pnpm run start:dev
+or
+$ npm run start:dev
+```
+
+- The server would be running on
+```bash
+http://127.0.0.1:3000/api/
+```
+
+# Frontend Setup
+
+## Installation
+  
+```bash
+$ cd frontend/
+```
+
+```bash
+$ pnpm install
+or
+$ npm install
+```
+start the app
+```bash
+$ pnpm dev
+or
+$ npm run dev
+```
+
+- The server would be running on
+```bash
+http://loaclhost:5173
+```
+
 
 ## 1. Database
 
@@ -129,7 +196,12 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+>
+  - For Normalization, I have used Third Normal Form (3NF) by creating three tables: `user`, `home`, and `user_home_relation`.
+  - The `user` table contains unique user information, such as `user_id`, `username`, and `email`.
+  - The `home` table stores property details, including `home_id`, `street_address`, `state`, `zip`, `sqft`, etc.
+  - The `user_home_relation` table serves as a junction table to manage the many-to-many relationship between users and homes.
+  - This structure eliminates redundancy and ensures all attributes are dependent only on primary keys, meeting 3NF requirements.
 
 ## 2. React SPA
 
@@ -220,7 +292,13 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+- I used **Redux Toolkit** for state management and **RTK Query** for optimized data fetching, which simplifies API calls and provides built-in caching, loading states, and error handling.
+- The application is structured in a **component-based architecture** to ensure clear separation of concerns, making the code more readable and scalable.
+- **RTK Query** enhances performance by reducing redundant API calls and efficiently managing data, improving the overall responsiveness of the application.
+- The UI is kept minimal but functional, following a responsive design approach to ensure it works well on various screen sizes.
+- I used **TailwindCSS** for styling, which allowed me to write clean and maintainable CSS directly in the components, ensuring a responsive and minimal UI design.
+- For loading states, I implemented **react-loading-skeleton**, which provides a smooth user experience by displaying skeletons during data fetching.
+
 
 ## 3. Backend API development on Node
 
@@ -281,7 +359,13 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+> ### **Backend Solution**
+
+- For the backend, I used **NestJS** with **TypeORM** to build a scalable and maintainable REST API.
+- **NestJS** provided a modular architecture that made it easy to organize and manage different API routes and services while ensuring the application is easily extendable.
+- **TypeORM** was used for database interactions, allowing seamless integration with MySQL and providing support for object-relational mapping, making query generation and database operations simpler and more efficient.
+- The API includes routes for fetching users, fetching homes by user, fetching users by home, and updating users for a home, ensuring efficient communication between the frontend and the database.
+- This combination ensured type safety, clean code structure, and an efficient database layer for interacting with the normalized schema.
 
 ## Submission Guidelines
 
