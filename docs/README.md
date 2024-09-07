@@ -39,12 +39,11 @@
 - clone the fork locally to develop
 
 ```bash
-git clone https://github.com/<username>/full_stack_assessment_skeleton.git
+git clone https://github.com/AKASH-PRASAD7/full_stack_assessment_skeleton.git
 ```
 
-> [!NOTE]
-> throughout the readme, we'll be working from within the root directory (full_stack_assessment_skeleton/) of the repo, unless otherwise stated
 
+# Database Setup
 - use docker to spin up **MySql** db container
 - this db instance has some data that will be needed for the exercise, included in it
 
@@ -65,6 +64,38 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 - the database is `home_db`, user `db_user` has full read-write access to it
 - `home_db.user_home` table has some data populated in it
+- Run all the queries inside `sql/99_final_db_dump.sql` to migrate the data
+
+ > [!CAUTION]
+> Make sure that the container's port is properly mapped to port 3306
+
+# Backend Setp
+
+## Installation
+
+```bash
+$ cd backend/
+```
+
+```bash
+$ pnpm install
+or
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ pnpm run start
+or
+$ npm start
+
+# watch mode
+$ pnpm run start:dev
+or
+$ npm run start:dev
+```
 
 ## 1. Database
 
