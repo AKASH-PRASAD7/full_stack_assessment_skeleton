@@ -97,6 +97,37 @@ or
 $ npm run start:dev
 ```
 
+- The server would be running on
+```bash
+http://127.0.0.1:3000/api/
+```
+
+# Frontend Setup
+
+## Installation
+  
+```bash
+$ cd frontend/
+```
+
+```bash
+$ pnpm install
+or
+$ npm install
+```
+start the app
+```bash
+$ pnpm dev
+or
+$ npm run dev
+```
+
+- The server would be running on
+```bash
+http://loaclhost:5173
+```
+
+
 ## 1. Database
 
 <details>
