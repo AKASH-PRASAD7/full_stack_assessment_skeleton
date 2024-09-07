@@ -15,7 +15,7 @@ import { UserHomeRelation } from './modules/user/entities/user.home.entity';
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: '127.0.0.1',
-      port: 8000,
+      port: 3306,
       username: 'db_user',
       password: '6equj5_db_user',
       database: 'home_db',
