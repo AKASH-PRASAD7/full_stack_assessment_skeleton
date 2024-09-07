@@ -14,6 +14,7 @@ interface ServiceResponse<T> {
   success: boolean;
   data?: T;
   message?: string;
+  total?: number;
 }
 
 @Injectable()
@@ -96,7 +97,7 @@ export class HomeService {
       return {
         success: true,
         data: homes,
-        message: `Showing page ${page} of results, total homes: ${total}`,
+        total,
       };
     } catch (error) {
       if (!(error instanceof NotFoundException)) {

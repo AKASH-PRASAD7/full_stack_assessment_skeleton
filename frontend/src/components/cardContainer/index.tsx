@@ -1,122 +1,77 @@
-import { useState } from "react";
 import Card from "../card";
 import Pagination from "../pagination";
+import Loader from "../Loader";
 
-const data = [
-  {
-    home_id: 2,
-    street_address: "123 Main St",
-    state: "NY",
-    zip: "10001",
-    sqft: 1200.0,
-    beds: 3,
-    baths: 2,
-    list_price: 500000.0,
-    homeRelations: [],
-  },
-  {
-    home_id: 3,
-    street_address: "456 Elm St",
-    state: "CA",
-    zip: "90001",
-    sqft: 1400.0,
-    beds: 4,
-    baths: 3,
-    list_price: 750000.0,
-  },
-  {
-    home_id: 2,
-    street_address: "123 Main St",
-    state: "NY",
-    zip: "10001",
-    sqft: 1200.0,
-    beds: 3,
-    baths: 2,
-    list_price: 500000.0,
-    homeRelations: [],
-  },
-  {
-    home_id: 3,
-    street_address: "456 Elm St",
-    state: "CA",
-    zip: "90001",
-    sqft: 1400.0,
-    beds: 4,
-    baths: 3,
-    list_price: 750000.0,
-  },
-  {
-    home_id: 2,
-    street_address: "123 Main St",
-    state: "NY",
-    zip: "10001",
-    sqft: 1200.0,
-    beds: 3,
-    baths: 2,
-    list_price: 500000.0,
-    homeRelations: [],
-  },
-  {
-    home_id: 3,
-    street_address: "456 Elm St",
-    state: "CA",
-    zip: "90001",
-    sqft: 1400.0,
-    beds: 4,
-    baths: 3,
-    list_price: 750000.0,
-  },
-  {
-    home_id: 2,
-    street_address: "123 Main St",
-    state: "NY",
-    zip: "10001",
-    sqft: 1200.0,
-    beds: 3,
-    baths: 2,
-    list_price: 500000.0,
-    homeRelations: [],
-  },
-  {
-    home_id: 3,
-    street_address: "456 Elm St",
-    state: "CA",
-    zip: "90001",
-    sqft: 1400.0,
-    beds: 4,
-    baths: 3,
-    list_price: 750000.0,
-  },
-];
-const CardContainer = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = 10;
+interface Home {
+  home_id: number;
+  street_address: string;
+  state: string;
+  zip: string;
+  sqft: number;
+  beds: number;
+  baths: number;
+  list_price: number;
+}
+interface User {
+  user_id: number;
+  username: string;
+}
+interface CardContainerProps {
+  data: { data: Home[] } | undefined;
+  users: User[];
+  error: any;
+  isLoading: boolean;
+  totalPages: number;
+  currentPage: number;
+  handlePageChange: (page: number) => void;
+}
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
+const CardContainer = ({
+  data,
+  error,
+  isLoading,
+  totalPages,
+  currentPage,
+  handlePageChange,
+  users,
+}: CardContainerProps) => {
   return (
     <>
       <section className="flex flex-wrap gap-4 my-8 justify-center">
-        {data.map((home) => (
-          <Card
-            key={home.home_id}
-            street_address={home.street_address}
-            state={home.state}
-            zip={home.zip}
-            sqft={home.sqft}
-            beds={home.beds}
-            baths={home.baths}
-            list_price={home.list_price}
-          />
-        ))}
+        {error && (
+          <p className="text-red-500 m-4 text-center">Error fetching data</p>
+        )}
+        {isLoading ? (
+          <Loader />
+        ) : !data ? (
+          <p className="text-black m-4 text-center">Select any user</p>
+        ) : data?.data.length === 0 ? (
+          <p className="text-red-500 m-4 text-center">No data found</p>
+        ) : (
+          data?.data.map((home: Home) => (
+            <Card
+              key={home.home_id}
+              id={home.home_id}
+              street_address={home.street_address}
+              state={home.state}
+              zip={home.zip}
+              sqft={home.sqft}
+              beds={home.beds}
+              baths={home.baths}
+              list_price={home.list_price}
+              users={users}
+            />
+          ))
+        )}
       </section>
       <section className="flex mb-12 justify-center">
-        <Pagination
-          totalPages={totalPages}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
+        {data && (
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
       </section>
     </>
   );

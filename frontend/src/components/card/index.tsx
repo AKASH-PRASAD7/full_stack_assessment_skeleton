@@ -2,6 +2,7 @@ import { useState } from "react";
 import Modal from "../modal";
 
 interface PropertyCardProps {
+  id: number;
   street_address: string;
   state: string;
   zip: string;
@@ -9,6 +10,7 @@ interface PropertyCardProps {
   beds: number;
   baths: number;
   list_price: number;
+  users: User[];
 }
 
 interface User {
@@ -24,27 +26,14 @@ const HomeCard: React.FC<PropertyCardProps> = ({
   beds,
   baths,
   list_price,
+  users,
+  id,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleEdit = () => {
     setIsOpen(true);
   };
-
-  const users: User[] = [
-    {
-      user_id: 1,
-      username: "john_doe",
-    },
-    {
-      user_id: 3,
-      username: "jane_doe",
-    },
-    {
-      user_id: 5,
-      username: "joe_doe",
-    },
-  ];
 
   return (
     <>
@@ -53,9 +42,10 @@ const HomeCard: React.FC<PropertyCardProps> = ({
           isOpen={isOpen}
           onClose={() => setIsOpen(false)}
           title={street_address}
-          users={users}
+          allUsers={users}
+          homeId={id}
         />
-        <div className="max-w-sm rounded  shadow-lg bg-white border   w-64 border-gray-200 py-8 px-4">
+        <div className="max-w-sm rounded  shadow-lg bg-white border h-80  w-64 border-gray-200 py-8 px-4">
           <div className="font-bold text-gray-950 text-xl mb-2">
             {street_address}
           </div>
