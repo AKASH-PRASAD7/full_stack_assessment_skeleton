@@ -32,6 +32,11 @@
     - key problem solving points: that provide a high level overview of how you solved that problem
       - eg: for the DB problem, what tables you created / altered, how does that accomplish the tasks (if it's not obvious)
     - instructions: you must include all instructions (including code) that will allow us to run and review your solution
+   
+## Screenshots
+  ![image](https://github.com/user-attachments/assets/128ccd19-c992-4b99-ac31-ade9c79557bd)
+  ![image](https://github.com/user-attachments/assets/c48fe9b1-689e-426b-b176-d37bb3ac1ddf)
+
 
 ## 0. Setup
 
