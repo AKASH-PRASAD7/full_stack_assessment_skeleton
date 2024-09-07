@@ -129,7 +129,12 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+>
+  - For Normalization, I have used Third Normal Form (3NF) by creating three tables: `user`, `home`, and `user_home_relation`.
+  - The `user` table contains unique user information, such as `user_id`, `username`, and `email`.
+  - The `home` table stores property details, including `home_id`, `street_address`, `state`, `zip`, `sqft`, etc.
+  - The `user_home_relation` table serves as a junction table to manage the many-to-many relationship between users and homes.
+  - This structure eliminates redundancy and ensures all attributes are dependent only on primary keys, meeting 3NF requirements.
 
 ## 2. React SPA
 
@@ -220,7 +225,13 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+- I used **Redux Toolkit** for state management and **RTK Query** for optimized data fetching, which simplifies API calls and provides built-in caching, loading states, and error handling.
+- The application is structured in a **component-based architecture** to ensure clear separation of concerns, making the code more readable and scalable.
+- **RTK Query** enhances performance by reducing redundant API calls and efficiently managing data, improving the overall responsiveness of the application.
+- The UI is kept minimal but functional, following a responsive design approach to ensure it works well on various screen sizes.
+- I used **TailwindCSS** for styling, which allowed me to write clean and maintainable CSS directly in the components, ensuring a responsive and minimal UI design.
+- For loading states, I implemented **react-loading-skeleton**, which provides a smooth user experience by displaying skeletons during data fetching.
+
 
 ## 3. Backend API development on Node
 
@@ -281,7 +292,13 @@ docker-compose -f docker-compose.initial.yml up --build -d
 
 ### solution
 
-> explain briefly your solution for this problem here
+> ### **Backend Solution**
+
+- For the backend, I used **NestJS** with **TypeORM** to build a scalable and maintainable REST API.
+- **NestJS** provided a modular architecture that made it easy to organize and manage different API routes and services while ensuring the application is easily extendable.
+- **TypeORM** was used for database interactions, allowing seamless integration with MySQL and providing support for object-relational mapping, making query generation and database operations simpler and more efficient.
+- The API includes routes for fetching users, fetching homes by user, fetching users by home, and updating users for a home, ensuring efficient communication between the frontend and the database.
+- This combination ensured type safety, clean code structure, and an efficient database layer for interacting with the normalized schema.
 
 ## Submission Guidelines
 
