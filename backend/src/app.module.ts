@@ -19,7 +19,7 @@ import { UserHomeRelation } from './modules/user/entities/user.home.entity';
       username: 'db_user',
       password: '6equj5_db_user',
       database: 'home_db',
-      entities: [User, Home, UserHomeRelation],
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
   ],
